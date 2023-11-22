@@ -69,13 +69,15 @@
 header{
 
         background-color: #e6f7e1;
-        background-image: url('../images/sky.jpg'); /* Replace 'path_to_your_image' with the actual path */
+        background-image: url('../images/sky.jpg'); 
         background-repeat: no-repeat;
         background-position: top center;
 
-        background-size: cover; /* Ensures the image covers the entire background */
+        background-size: cover; 
         padding: 20px;
         font-size: 1rem;
+        opacity: 0; 
+        animation: fadeIn 1s forwards; 
     
     
 }
@@ -118,7 +120,7 @@ img {
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
-    border-radius: 75px;
+    border-radius: 25px;
     transition: transform 0.3s, filter 0.3s;
 }
 img:hover {
@@ -189,7 +191,7 @@ p, span, li {
 
 nav {
     
-    display: flex; /* or display: inline-block; */
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
@@ -254,13 +256,18 @@ nav a:focus, nav a:hover {
     align-items: center;
 }
 
-.gallery {
 
+.gallery{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding-bottom: 50px;
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    padding-left: 10px;
+    margin-bottom: 10px;
 }
+
+
+
+
 
 .food_images img, .pet_images img, figure img, video {
     border: double #00ff00 2px;
@@ -305,6 +312,13 @@ nav a:focus, nav a:hover {
     .food_images img, .pet_images img, figure img, video {
         animation: none;
     }
+    img {
+        transition: none;
+        }
+    img:hover {
+        width: none;
+        transform: none;
+    }
 }
 
 @keyframes example {
@@ -316,6 +330,42 @@ nav a:focus, nav a:hover {
         background-color: #fff;
     }
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0; 
+    }
+    to {
+        opacity: 1; 
+    }
+}
+
+/* tab view */
+@media (min-width: 680px) {
+    .gallery {
+       
+        grid-template-columns: repeat(auto-fill, minmax(calc(25% - 20px), 1fr));
+        gap: 20px;
+    
+    }
+  }
+  
+  /* desktop view*/
+  @media (min-width: 900px) {
+    .gallery {
+        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        
+        padding-bottom: 50px;
+    
+    }
+    .gallery img:nth-last-child(5) {
+        grid-column: span 2; 
+    }
+  }
+
 
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
